@@ -3,21 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
   <title>Tic Tac Toe</title>
 </head>
 <body>
-  <h1>Tic Tac Toe!</h1>
-  <div id='board'>
-    <div class='cell'></div>
-    <div class='cell'></div>
-    <div class='cell'></div>
-    <div class='cell'></div>
-    <div class='cell'></div>
-    <div class='cell'></div>
-    <div class='cell'></div>
-    <div class='cell'></div>
-    <div class='cell'></div>
-  </div>
-  <button id='start'>Start Game</button>
+  <container id="game-container">
+    <div id="game-title-container">
+        <h1 id="game-title">T I C - T A C - T O E</h1>
+    </div>
+
+    <form id="start-game-form">
+        <button type="submit" id="start-game-btn">New Game</button>
+       
+        <input data-player-1-input type="text" id="player_one" class="player-names" placeholder="Player 1 Name">
+        
+        <input data-player-2-input type="text" id="player_two" class="player-names" placeholder="Player 2 Name">
+    </form>
+    <h1 id="player-turn"></h1>
+    <div id="game-board-container">
+        <div id="game-board">
+            <div data-cell class="cell"></div>
+            <div data-cell class="cell"></div>
+            <div data-cell class="cell"></div>
+            <div data-cell class="cell"></div>
+            <div data-cell class="cell"></div>
+            <div data-cell class="cell"></div>
+            <div data-cell class="cell"></div>
+            <div data-cell class="cell"></div>
+            <div data-cell class="cell"></div>
+        </div>
+    </div>
+    <div id="game-timer"></div>
+    
+    <button id="restart-btn">Play again?</button>
+</container>
+<script src="main.js"></script>
 </body>
 </html>
