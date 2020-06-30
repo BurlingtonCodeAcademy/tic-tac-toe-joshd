@@ -252,6 +252,7 @@ const game = (() => {
             cell.removeEventListener('click', addToBoard, { once: true });
         });
         roundCount = 0;
+        x_turn = true;
         displayController.restartBtn.style.display = 'inline';
     };
 
