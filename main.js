@@ -43,6 +43,7 @@ const player2 = Player('Player 2', 'O');
 const game = (() => {
     
     const playerTurn = document.getElementById('player-turn');
+    const gameTimer = document.getElementById('game-timer');
     playerTurn.style.display = "none";
     let x_turn = true;
     let roundCount = 0;
@@ -99,6 +100,7 @@ const game = (() => {
         function startFunction(e) {
             e.preventDefault();
             activateCells();
+            startTimer();
             let playerOneNameInputVal = startGame.querySelector('[data-player-1-input]').value;
             let playerTwoNameInputVal = startGame.querySelector('[data-player-2-input]').value;
             player1name = playerOneNameInputVal;
@@ -218,11 +220,13 @@ const game = (() => {
         if (playerOneWin === true) {
             console.log('player 1 wins');
             playerTurn.innerText = `${player1name} wins!`;
+            stopTimer();
             resetBoard();
             gameBoard.resetPlayers();
         } else if (playerTwoWin === true) {
             console.log('player 2 wins');
             playerTurn.innerText = `${player2name} wins!`;
+            stopTimer();
             resetBoard();
             gameBoard.resetPlayers();
         } else if (!playerOneWin && !playerTwoWin) {
@@ -230,6 +234,7 @@ const game = (() => {
             if(roundCount === 9) {
                 console.log('Draw');
                 playerTurn.innerText = 'It\'s a draw!';
+                stopTimer();
                 resetBoard();
                 gameBoard.resetPlayers();
             }
@@ -255,6 +260,28 @@ const game = (() => {
         x_turn = true;
         displayController.restartBtn.style.display = 'inline';
     };
+
+    function startTimer() {
+        gameTimer.style.display = '';
+        gameTimer.innerText = 'Time elapsed : 00:00:00';
+        let seconds = 0;
+        timer = setInterval(function() {
+            seconds++;
+            let secondCount = seconds % 60;
+            let minuteCount = parseInt(seconds / 60);
+            let hourCount = parseInt(minuteCount / 60);
+            if (secondCount < 10) {
+                
+            }
+            timerDisplay = `${hourCount < 10 ? '0' : ''}${hourCount}:${minuteCount < 10 ? '0' : ''}${minuteCount}:${secondCount < 10 ? '0' : ''}${secondCount}`;
+            gameTimer.innerText = `Time elapsed : ${timerDisplay}`;
+        }, 1000)
+    }
+
+    function stopTimer() {
+        clearInterval(timer);
+        gameTimer.style.display = 'none';
+    }
 
 
     return {
